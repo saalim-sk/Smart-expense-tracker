@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expense Tracker | Login</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="login-page">
+  <main class="login-card">
+    <div class="brand-mark">₹</div>
+    <p class="eyebrow">PERSONAL FINANCE</p>
+    <h1>Expense Tracker</h1>
+    <p class="muted">Manage your money with confidence.</p>
+    <form id="loginForm">
+      <label for="username">Username</label>
+      <input id="username" autocomplete="username" placeholder="Enter username" required>
+      <label for="password">Password</label>
+      <input id="password" type="password" autocomplete="current-password" placeholder="Enter password" required>
+      <p id="loginError" class="error" aria-live="polite"></p>
+      <button class="primary-btn full-width" type="submit">Login to dashboard</button>
+    </form>
+    <p class="demo-hint">Demo login: <strong>admin</strong> / <strong>1234</strong></p>
+    <p class="tiny muted">Student project demonstration</p>
+  </main>
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const user = document.getElementById('username').value.trim();
+      const pass = document.getElementById('password').value;
+      if (user === 'admin' && pass === '1234') {
+        sessionStorage.setItem('expenseTrackerUser', user);
+        window.location.href = 'dashboard.html';
+      } else {
+        document.getElementById('loginError').textContent = 'Invalid username or password. Try admin / 1234.';
+      }
+    });
+  </script>
+</body>
+</html>
