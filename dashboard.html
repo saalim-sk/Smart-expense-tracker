@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expense Tracker | Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="dashboard.html"><span class="brand-mark small">₹</span><span>Expense Tracker</span></a>
+    <div class="top-actions"><span id="welcomeUser" class="muted"></span><button id="logoutBtn" class="outline-btn">Logout</button></div>
+  </header>
+  <main class="container">
+    <section class="page-heading">
+      <div><p class="eyebrow">OVERVIEW</p><h1>Your money dashboard</h1><p class="muted">Track income, spending, and your current balance.</p></div>
+      <div class="date-pill" id="todayDate"></div>
+    </section>
+    <section class="summary-grid">
+      <article class="summary-card balance-card"><div class="card-top"><span>Current Balance</span><span class="icon-bubble">₹</span></div><div id="balanceTotal" class="amount">₹0.00</div><p class="card-note">Income minus expenses</p></article>
+      <article class="summary-card"><div class="card-top"><span>Total Income</span><span class="icon-bubble green">↗</span></div><div id="incomeTotal" class="amount">₹0.00</div><p class="card-note">All recorded income</p></article>
+      <article class="summary-card"><div class="card-top"><span>Total Expenses</span><span class="icon-bubble red">↘</span></div><div id="expenseTotal" class="amount">₹0.00</div><p class="card-note">All recorded expenses</p></article>
+    </section>
+    <section class="content-grid">
+      <article class="panel">
+        <div class="panel-heading"><div><h2>Add a transaction</h2><p class="muted">Enter income or an expense below.</p></div></div>
+        <form id="transactionForm" class="transaction-form">
+          <div class="field"><label for="type">Transaction type</label><select id="type" required><option value="expense">Expense</option><option value="income">Income</option></select></div>
+          <div class="field"><label for="title">Description</label><input id="title" placeholder="e.g. Groceries, Salary" maxlength="60" required></div>
+          <div class="field"><label for="amount">Amount (₹)</label><input id="amount" type="number" min="0.01" step="0.01" placeholder="0.00" required></div>
+          <div class="field"><label for="category">Category</label><select id="category" required><option>Food</option><option>Travel</option><option>Shopping</option><option>Bills</option><option>Education</option><option>Salary</option><option>Freelance</option><option>Other</option></select></div>
+          <div class="field"><label for="date">Date</label><input id="date" type="date" required></div>
+          <button class="primary-btn full-width" type="submit">+ Add transaction</button>
+          <p id="formMessage" class="success-message" aria-live="polite"></p>
+        </form>
+      </article>
+      <article class="panel">
+        <div class="panel-heading"><div><h2>Spending snapshot</h2><p class="muted">Expenses grouped by category.</p></div></div>
+        <div id="categoryBreakdown" class="breakdown"><p class="muted">Add an expense to see your spending.</p></div>
+        <div class="project-note"><strong>Project note</strong><p>This demo stores transactions in this browser using local storage. Use the same browser to see saved demo data.</p></div>
+      </article>
+    </section>
+    <section class="panel history-panel">
+      <div class="panel-heading history-heading"><div><h2>Transaction history</h2><p class="muted">Review or remove recorded transactions.</p></div><input id="searchInput" class="search-input" placeholder="Search transactions…" aria-label="Search transactions"></div>
+      <div class="table-wrap"><table><thead><tr><th>Description</th><th>Category</th><th>Date</th><th>Type</th><th class="right">Amount</th><th></th></tr></thead><tbody id="transactionRows"><tr><td colspan="6" class="empty-state">No transactions yet. Add one above to get started.</td></tr></tbody></table></div>
+    </section>
+    <footer class="footer">Expense Tracker • Student Project Demo</footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
